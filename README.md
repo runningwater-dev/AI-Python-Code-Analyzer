@@ -1,47 +1,95 @@
-# PyAgent
+# AI Python Code Analyzer
 
-A modular Python AI coding agent that reads Python files, detects bugs, explains issues, analyzes time complexity, generates edge tests, runs code automatically, and suggests fixes.
+An AI-powered full-stack code analysis platform that analyzes Python files for bugs, code smells, complexity issues, and edge cases.
 
-## Features
+Built using:
+- **FastAPI** for the backend API
+- **Next.js + Tailwind CSS** for the frontend
+- **Python AST parsing** for static analysis
+- **Pytest** integration for generated test execution
 
-- Read and parse Python sources with AST
-- Detect common bugs and code smells
-- Explain issues with natural language output
-- Estimate time complexity of functions
-- Generate edge-case pytest scenarios
-- Execute code and tests automatically
-- Suggest bug fixes and improvement strategies
-- Orchestrate analysis with a LangGraph-style workflow
-- Provide a rich CLI powered by `rich`
+---
 
-## Installation
+## Live Demo
 
-```bash
-python -m pip install -e .
-```
+https://ai-python-code-analyzer.vercel.app/
 
-## Environment variables
+---
 
-Create a `.env` file in the project root with:
+# Features
 
-```text
-GEMINI_API_KEY=your_api_key_here
-GEMINI_FLASHAPI_ENDPOINT=https://flashapi.googleapis.com/v1beta/generateText
-```
+- Detects common Python bugs and code smells
+- Performs static code analysis using Python AST
+- Estimates time complexity of functions
+- Generates edge-case pytest tests automatically
+- Executes generated tests
+- Suggests fixes and improvement strategies
+- Upload-and-analyze web interface
+- Responsive frontend UI
+- REST API powered by FastAPI
 
-The agent will load `.env` automatically on startup.
+---
 
-## Usage
+# Tech Stack
 
-```bash
-python -m agent.cli analyze path/to/file.py
-python -m agent.cli workflow path/to/file.py
-```
+## Frontend
+- Next.js
+- React
+- Tailwind CSS
 
-## Development
+## Backend
+- FastAPI
+- Python
+- Uvicorn
 
-Run tests with:
+## Analysis Engine
+- Python AST
+- Pytest
+- Custom workflow orchestration
 
-```bash
-pytest
-```
+---
+
+# Example Capabilities
+
+The analyzer can detect issues like:
+
+- Mutable default arguments
+- Bare `except` blocks
+- Missing return statements
+- Unused imports
+- Basic complexity estimation
+- Edge-case failures
+
+---
+## Analyze Python File
+
+### POST `/analyze`
+
+Upload a `.py` file and receive:
+- detected bugs
+- complexity analysis
+- generated tests
+- test execution results
+- fix suggestions
+
+---
+
+# Why This Project
+
+This project was built to explore:
+- AI-assisted developer tooling
+- static analysis systems
+- automated debugging workflows
+- full-stack deployment pipelines
+- developer experience tooling
+---
+
+# Deployment
+
+## Frontend
+Deployed on Vercel.
+
+## Backend
+Powered by FastAPI and deployed separately.
+
+---
