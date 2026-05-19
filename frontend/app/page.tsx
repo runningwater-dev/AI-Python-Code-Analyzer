@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import axios from "axios";
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null);
@@ -17,34 +16,30 @@ export default function Home() {
     }
 
     setLoading(true);
-    setUploadProgress(0);
+    setUploadProgress(30);
 
     const formData = new FormData();
     formData.append("file", file as File);
 
     try {
 
-      const response = await axios.post(
-        "https://ai-python-code-analyzer.onrender.com",
-        formData,
+      setUploadProgress(60);
+
+      const response = await fetch(
+        "https://ai-python-code-analyzer.onrender.com/analyze",
         {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-
-          onUploadProgress: (progressEvent) => {
-
-            const percent = Math.round(
-              (progressEvent.loaded * 100) /
-              (progressEvent.total || 1)
-            );
-
-            setUploadProgress(percent);
-          },
+          method: "POST",
+          body: formData,
         }
       );
 
-      setResult(response.data);
+      setUploadProgress(90);
+
+      const data = await response.json();
+
+      setResult(data);
+
+      setUploadProgress(100);
 
     } catch (error) {
 
@@ -53,9 +48,11 @@ export default function Home() {
 
     } finally {
 
-      setLoading(false);
+      setTimeout(() => {
+       setLoading(false);
+      }, 500);
     }
-  }
+    }
 
   return (
     <main className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
