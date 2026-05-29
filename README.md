@@ -10,7 +10,7 @@ Built using:
 
 ---
 
-## Live Demo
+## Deployed
 
 https://ai-python-code-analyzer.vercel.app/
 
